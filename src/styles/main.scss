@@ -1,38 +1,43 @@
-* {
-  box-sizing: border-box;
-  font-family: "Times New Roman", Times, serif;
+:root {
   --alternate-body-color: #f9fafb;
+  --focused-color: #d2d4d6;
   --primary-input-color: rgb(0, 132, 255);
   --error-color: red;
   --neon-color: #c7f02e;
-  --nav-bar-space: 52px;
+  --nav-bar-space: 60px;
 }
 
 body {
   font-size: 16px;
+  font-family: "Roboto", serif;
 }
+
 h1,
 h2,
 h3,
 h4,
 h5,
-h6,
-p {
-  padding: 0;
+h6 {
   margin: 0;
+  font-size: 16px;
 }
-.currency {
+.currency-symbol {
   font-size: 12px;
   font-weight: 200;
 }
-//NAV
 li a {
   text-decoration: none;
 }
 ul {
   list-style: none;
+  max-width: 98vw;
   margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
 }
+//Navigation bar
 .nav-container svg {
   width: 2.5rem;
 }
@@ -58,292 +63,99 @@ ul {
   align-items: center;
 }
 
-//HEADER
-.header {
-  padding: 2px;
-  color: white;
-  background-color: var(--primary-input-color);
-  display: flex;
-  gap: 5px;
-  align-items: center;
-}
-.header img,
-.header svg {
-  width: 5rem;
-}
-.header svg path {
-  fill: white;
-}
-.header .logo {
-  flex: 1;
-  font-size: 24px;
-  font-weight: 700;
-}
-.header .fname {
-  font-size: 16px;
-  font-weight: 700;
-}
-.header .mId {
-  font-size: 12px;
-  font-weight: 500;
-}
-
-//ACCOUNT DATA SECTION
-.account-data {
-  padding: 8px;
-  max-width: 100%;
+// KEY METRICS
+.key-metrics {
   display: grid;
-  grid-template-columns: repeat(2, minmax(150px, 1fr));
-  background-color: var(--alternate-body-color);
-  gap: 8px;
-}
-.account-data .data-item {
-  // background-color: var(--neon-color);
-  color: black;
-  padding: 8px;
-  border-radius: 5px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-}
-.account-data h3 {
-  margin: 0;
-  font-size: 16px;
-  color: var(--primary-input-color);
-}
-.account-data p {
-  font-size: 20px;
-  font-weight: 700;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: 1rem;
+  margin: 1rem 0;
+  padding: 1rem;
 }
 
-//TRANSACTION DATA
-#app > h2 {
-  font-size: 20px;
+.key-metrics .data-item {
+  background-color: #f7f9fb;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: default;
 }
-.recent-transactions {
+
+.key-metrics .data-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+}
+
+.key-metrics .data-item h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.key-metrics .data-item p,
+.key-metrics .data-item .amount {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #111;
+}
+
+//RECENT ACTIVITY
+.recent-activity {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  margin-bottom: var(--nav-bar-space);
 }
-.transaction {
+.activity {
   background-color: var(--alternate-body-color);
+  font-size: 14px;
   display: flex;
   justify-content: space-between;
+  border-radius: 8px;
+  padding: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s, box-shadow 0.3s;
 }
-
-.trans-head h3 {
-  font-size: 16px;
-  margin: 0;
-  font-weight: 200;
+.activity:hover,
+.activity:focus-within {
+  background-color: var(--focused-color);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
-.trans-head p {
+.activity .trans-type {
+  font-size: 20px;
+  font-weight: 400;
+}
+.activity .amount {
   font-size: 20px;
   font-weight: 700;
 }
-.transaction > span {
+.activity .date {
   font-size: 14px;
 }
-.trans-head .Deposit {
+.trans-type.Deposit {
   color: #34c759;
 }
-.trans-head .withdraw {
+.trans-type.withdraw {
   color: #ff0000;
 }
-.trans-head .loan {
+.trans-type.loans {
   color: #ffc107;
 }
-.trans-head .saving {
+.trans-type.savings {
   color: #2196f3;
 }
-.trans-head .shares {
+.trans-type.shares {
   color: #7a288a;
 }
-.trans-head .penalty {
+.trans-type.penalties {
   color: #8f0a1a;
 }
-
-//LOGIN CSS
-.login-container {
-  max-width: 98vw;
-  margin: 0 auto;
-  padding: 1rem;
-  background-color: #fff;
+.trans-type.interest {
+  color: #daa520;
 }
-.login-container h1 {
-  text-align: center;
-  padding: 0;
-  margin: 0;
+.activity-right .closed {
+  color: gray;
 }
-.login-container form {
-  max-width: 460px;
-  margin: 3rem auto;
-  padding: 2rem;
-  border: 1px solid #ddd;
-  border-radius: 0.25rem;
-  background-color: #fff;
-}
-.login-container input {
-  appearance: none;
-  display: block;
-  width: 100%;
-  color: #333;
-  border: 1px solid rgb(180, 180, 180);
-  background-color: white;
-  padding: 1rem;
-  border-radius: 0.25rem;
-}
-input:focus {
-  outline: none;
-  border: 1px solid var(--primary-input-color);
-  background-clip: padding-box;
-}
-
-.error-message {
-  font-size: 0.85rem;
-  color: var(--error-color);
-}
-
-.login-container form button {
-  background-color: var(--primary-input-color);
-  padding: 1rem;
-  border: none;
-  color: #fff;
-  font-weight: bold;
-  display: block;
-  width: 100%;
-  text-align: center;
-  cursor: pointer;
-  font-size: 1rem;
-}
-
-.login-container form button:hover {
-  filter: brightness(110%);
-}
-//LOANS
-.current-loan {
-  max-width: 90vw;
-  margin: 5px auto;
-  background-color: var(--neon-color);
-  border-radius: 1rem;
-  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5);
-  padding: 5px;
-  display: flex;
-}
-.current-loan-title {
-  font-size: 12px;
-  font-weight: 100;
-}
-.current-loan div {
-  flex: 1;
-}
-.current-loan div > p {
-  font-size: 52px;
-  font-weight: 500;
-}
-.current-loan > span {
-  align-self: flex-end;
-  font-size: 12px;
-}
-.loans-buttons {
-  display: flex;
-  gap: 8px;
-}
-.short-term-loan-btn,
-.long-term-loan-btn {
-  background-color: var(--primary-input-color);
-  color: #fff;
-  padding: 12px 24px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease-in-out;
-}
-
-.short-term-loan-btn:hover,
-.long-term-loan-btn:hover {
-  opacity: 0.8;
-}
-
-.short-term-loan-btn:active,
-.long-term-loan-btn:active {
-  transform: scale(0.9);
-}
-
-.loan-activity-section {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin-bottom: var(--nav-bar-space);
-}
-.loan-activity {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: var(--alternate-body-color);
-  padding: 5px;
-}
-.activity-head > div {
-  color: var(--neon-color);
-  font-size: 12px;
-}
-.activity-head p {
-  font-weight: 700;
-  font-size: 20px;
-}
-.activity-details .due {
-  color: #ff0000;
-}
-.activity-details .pending {
-  color: #f7dc6f;
-}
-.activity-details .approved {
-  color: #34c759;
-}
-.activity-details .active {
-  color: #2196f3;
-}
-.activity-details :first-child,
-.activity-details :last-child {
-  font-size: 12px;
-}
-.activity-details :nth-child(2) {
-  font-size: 14px;
-  font-weight: 700;
-}
-//LOAN FORM
-.loan-form {
-  width: 90vw;
-  margin: 0.25rem auto;
-  padding: 2rem;
-  border: 1px solid #ddd;
-  border-radius: 0.25rem;
-  background-color: #fff;
-}
-.loan-form input {
-  appearance: none;
-  display: block;
-  width: 100%;
-  color: #333;
-  border: 1px solid rgb(180, 180, 180);
-  background-color: white;
-  padding: 1rem;
-  border-radius: 0.25rem;
-}
-
-.loan-form button {
-  background-color: var(--primary-input-color);
-  color: #fff;
-  padding: 12px 24px;
-  width: 100%;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease-in-out;
-  margin-top: 8px;
-}
-
-.loan-form button:hover {
-  opacity: 0.8;
+.activity-right .active {
+  color: green;
 }

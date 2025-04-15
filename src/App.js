@@ -1,26 +1,16 @@
-import Home from "./components/Home";
-import Loans from "./components/Loans";
-import More from "./components/More";
-import { Routes, Route, Navigate } from "react-router-dom";
-import UserLogin from "./components/UserLogin";
-import AuthOutlet from "@auth-kit/react-router/AuthOutlet";
+import { Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import Loans from "./pages/Loans";
+import More from "./pages/More";
 
 function App() {
   return (
     <>
       <Routes>
-        <Route element={<AuthOutlet fallbackPath="/userlogin" />}>
-          <Route path="/" element={<Home />} />
-          <Route path="/loans" element={<Loans />} />
-          <Route path="/more" element={<More />} />
-        </Route>
-        <Route path="/userlogin" element={<UserLogin />} />
-        <Route
-          path="*"
-          element={
-            localStorage.getItem("_auth") ? <Navigate to="/" /> : <UserLogin />
-          }
-        />
+        <Route path="/" element={<Home />} />
+        <Route path="/loans" element={<Loans />} />
+        <Route path="/more" element={<More />} />
+        <Route path="*" element={<Home />} />
       </Routes>
     </>
   );

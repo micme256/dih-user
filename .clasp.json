@@ -1,1 +1,17 @@
-{"scriptId":"1gM93KhJvmkhBnPN0EAgvsZASAUozZxrDLqKJytJTijec1Kp0azcnM6TM","rootDir":"./appscript","parentId":["12F7_qbhviFAh1vtytGmAXZvSWBLBwbzejV1ddBUYOMw"]}
+{
+  "scriptId": "1Dgub3j3ftB8tcH_ORMVwrLEvaMfTE0cYT-lVjWEdl3xcz2kh2RY488Qo",
+  "rootDir": "appscript",
+  "parentId": "1we2RfaWYQ-uJ3aSa0g5qrhi8i1ujvz53EPcWSniuzBI",
+  "scriptExtensions": [
+    ".js",
+    ".gs"
+  ],
+  "htmlExtensions": [
+    ".html"
+  ],
+  "jsonExtensions": [
+    ".json"
+  ],
+  "filePushOrder": [],
+  "skipSubdirectories": false
+}
