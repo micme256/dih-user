@@ -1,5 +1,5 @@
 import React from "react";
-import Metrics from "../components/Metrics";
+import BalCard from "../components/BalCard";
 import Nav from "./Nav";
 import RecentActivity from "../components/RecentActivity";
 
@@ -124,7 +124,12 @@ const Home = () => {
 
   return (
     <>
-      <Metrics metricsData={metricsData} />
+      <div className="welcome-msg">
+        <p>Welcome</p>
+        <h1>Hello Nyiringango</h1>
+      </div>
+      <div className="header-background"></div>
+      <BalCard metrics={metricsData} />
       <RecentActivity recentActivity={recentActivity} />
       <Nav />
     </>

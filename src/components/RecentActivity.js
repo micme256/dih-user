@@ -5,6 +5,7 @@ import { formatDate } from "../helper-functions/formatDate";
 const RecentActivity = ({ recentActivity }) => {
   return (
     <div className="recent-activity">
+      <h1 className="recent-activity-title">Recent activity</h1>
       {recentActivity.map((activity) => (
         <div className="activity" tabIndex="0" key={activity.transactionId}>
           <div className="activity-left">
